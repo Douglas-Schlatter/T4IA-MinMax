@@ -1,3 +1,51 @@
+# Projeto de Regressão Linear e TensorFlow/Keras
+
+## Integrantes do Grupo:
+
+- **Douglas Ardenghi Schlatter** - Cartão: 00332849 - Turma A
+- **João Paulo Vasquez Dias** - Cartão: 00333827 - Turma A
+- **Matheus Rodrigues Fonseca** - Cartão: 00332800 - Turma A
+
+
+
+
+# Avaliação Tic-Tac-Toe Misere:
+ - **(i) O minimax sempre ganha do randomplayer?**
+
+ - **(ii) O minimax sempre empata consigo mesmo?**
+  
+ - **(iii) O minimax sempre empata contra as jogadas perfeitas recomendadas pelo
+   https://nyc.cs.berkeley.edu/uni/games/ttt/variants/misere ? Para verificar isso, use o
+   humanplayer. No link, faça as jogadas do minimax, e no servidor do kit, faça as
+   jogadas recomendadas (amarelo ou verde) do link.**
+
+Avaliação Othello:
+(i) Represente em uma matriz de 3 X 3 onde as linhas representam o jogador que inicia
+(player 1) e as colunas representam o player 2 e em cada célula, indique se a partida
+resultou em vitória (1), derrota (-1) ou empate (0) entre os agentes com cada uma das
+heurísticas.
+
+Heuristica_count
+Heuristica_positon
+Heuristica_custom
+
+
+(ii) Observe e relate qual implementação foi a mais bem-sucedida.
+
+
+
+(iii) Reflita sobre o que pode ter tornado cada heurística melhor ou pior, em termos de
+performance.
+
+
+| Dataset       | Tempo (segundos)     | Acurácia  |
+|---------------|------------|-----------|
+| mnist         | 63.32      | 99.3%     |
+| fashion_mnist | 323.33     | 89.8%     |
+| cifar10       | 1678.94    | 67.9%     |
+| cifar100      | 756.69     | 38.3%     |
+
+
 # Kit othello
 Kit para executar partidas de Othello e Jogo da Velha invertido (Tic-Tac-Toe Misere) e implementar algoritmos de busca com adversário.
 
