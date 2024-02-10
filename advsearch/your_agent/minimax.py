@@ -19,8 +19,6 @@ def minimax_move(state, max_depth:int, eval_func:Callable) -> Tuple[int, int]:
     (value, move) =  maxr(state, alpha, beta, max_depth, 0, eval_func, state.player,None)
     return move
     
-    raise NotImplementedError()
-
 def maxr(state,alpha:float, beta:float, max_depth, depth, eval_func, player,lastMove):
     #print(state.board)
     if (((depth >= max_depth) and (max_depth != -1)) or state.is_terminal()):
@@ -32,7 +30,7 @@ def maxr(state,alpha:float, beta:float, max_depth, depth, eval_func, player,last
             (value, nextMove) = minr(state.next_state(move), alpha, beta, max_depth, depth+1, eval_func, player, move)
             if (value > bestValue):
                 bestValue = value
-                bestMove = nextMove
+                bestMove = move
             alpha = max(value,alpha)
             if (alpha >= beta):
                 break
@@ -49,7 +47,7 @@ def minr(state,alpha:float, beta:float, max_depth, depth, eval_func, player,last
             (value, nextMove) = maxr(state.next_state(move), alpha, beta, max_depth, depth+1, eval_func, player, move)
             if (value < worstValue):
                 worstValue = value
-                worstMove = nextMove
+                worstMove = move
             
             beta = min(value,beta)
             if (alpha >= beta):
