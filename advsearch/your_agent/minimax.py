@@ -16,43 +16,42 @@ def minimax_move(state, max_depth:int, eval_func:Callable) -> Tuple[int, int]:
     alpha = -10**9
     beta = 10**9
 
-    max(state, alpha, beta, max_depth, 0, eval_func)
-
-
+    (value, move) =  maxr(state, alpha, beta, max_depth, 0, eval_func, state.player,None)
+    return move
+    
     raise NotImplementedError()
 
-def max(state,alpha:float, beta:float, max_depth, depth, eval_func):
-
-    if ((depth >= max_depth) and (depth != -1)):
-        return(eval_func(state), [0, 0])
+def maxr(state,alpha:float, beta:float, max_depth, depth, eval_func, player,lastMove):
+    #print(state.board)
+    if (((depth >= max_depth) and (max_depth != -1)) or state.is_terminal()):
+        return(eval_func(state, player), lastMove)
     else:
         bestValue = -10**9
         bestMove = None
         for move in state.legal_moves():
-            (value, nextMove) = min(state.next_state(move), alpha, beta, max_depth, depth+1, eval_func)
+            (value, nextMove) = minr(state.next_state(move), alpha, beta, max_depth, depth+1, eval_func, player, move)
             if (value > bestValue):
                 bestValue = value
                 bestMove = nextMove
-            if (value > alpha):
-                alpha = value
+            alpha = max(value,alpha)
             if (alpha >= beta):
                 break
     return (bestValue, bestMove)
 
-def min(state,alpha:float, beta:float, max_depth, depth, eval_func):
-
-    if ((depth >= max_depth) and (depth != -1)):
-        return(eval_func(state), [0, 0])
+def minr(state,alpha:float, beta:float, max_depth, depth, eval_func, player,lastMove):
+    #print(state.board)
+    if (((depth >= max_depth) and (max_depth != -1)) or state.is_terminal()):
+        return(eval_func(state, player), lastMove)
     else:
         worstValue = 10**9
         worstMove = None
         for move in state.legal_moves():
-            (value, nextMove) = max(state.next_state(move), alpha, beta, max_depth, depth+1, eval_func)
+            (value, nextMove) = maxr(state.next_state(move), alpha, beta, max_depth, depth+1, eval_func, player, move)
             if (value < worstValue):
                 worstValue = value
                 worstMove = nextMove
-            if (value < beta):
-                beta = value
+            
+            beta = min(value,beta)
             if (alpha >= beta):
                 break
     return (worstValue, worstMove)

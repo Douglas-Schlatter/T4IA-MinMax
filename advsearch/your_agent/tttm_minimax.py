@@ -32,10 +32,19 @@ def utility(state, player:str) -> float:
     """
     Retorna a utilidade de um estado (terminal) 
     """
-    #Tem que trocar o W e B pra algo genérico
-    if (state.winner() == 'W'):
-        return -1
-    if (state.winner() == 'B'):
+    ''' 
+    print(state.board)
+    print("\n")
+    print("player = " + str(player))
+    print("\n")
+    print("winner = " + str(state.winner()))
+    print("\n")
+    '''
+    if (state.winner() == player):
+        #print("winner = " + str(1))
         return 1
-    else:
+    if (state.winner() == None):
+
         return 0
+    else:
+        return -1
