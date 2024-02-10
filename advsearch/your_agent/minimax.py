@@ -24,7 +24,7 @@ def minimax_move(state, max_depth:int, eval_func:Callable) -> Tuple[int, int]:
 def max(state,alpha:float, beta:float, max_depth, depth, eval_func):
 
     if ((depth >= max_depth) and (depth != -1)):
-        ## ALGUMA COISA
+        return(eval_func(state), [0, 0])
     else:
         bestValue = -10**9
         bestMove = None
@@ -39,15 +39,15 @@ def max(state,alpha:float, beta:float, max_depth, depth, eval_func):
                 break
     return (bestValue, bestMove)
 
-def min(state,alpha:float, beta:float, max_depth, depth):
+def min(state,alpha:float, beta:float, max_depth, depth, eval_func):
 
     if ((depth >= max_depth) and (depth != -1)):
-        #ALGUMA COISA
+        return(eval_func(state), [0, 0])
     else:
         worstValue = 10**9
         worstMove = None
         for move in state.legal_moves():
-            (value, nextMove) = max(state.next_state(move), alpha, beta, max_depth, depth+1)
+            (value, nextMove) = max(state.next_state(move), alpha, beta, max_depth, depth+1, eval_func)
             if (value < worstValue):
                 worstValue = value
                 worstMove = nextMove
